@@ -24,7 +24,9 @@
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/startcode"/>
             <property name="javax.persistence.jdbc.user" value="dev"/>
             <property name="javax.persistence.jdbc.password" value="ax2"/>
-            
+           <!-- run zipscript.sql for populate DB -->
+            <property name="javax.persistence.sql-load-script-source" value="META-INF/zipScript.sql"/>
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
         </properties>
     </persistence-unit>
     

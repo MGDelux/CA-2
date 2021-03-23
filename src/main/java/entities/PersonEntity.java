@@ -29,7 +29,7 @@ public class PersonEntity implements Serializable {
     public PersonEntity() {
     }  
     
-   @ManyToMany(mappedBy = "persons", cascade = CascadeType.PERSIST)
+   @ManyToMany(mappedBy = "person", cascade = CascadeType.PERSIST)
     List<HobbyEntity> activities;
 
     @ManyToOne
@@ -44,7 +44,7 @@ public class PersonEntity implements Serializable {
     }
     
    
-   @OneToMany(mappedBy = "persons", cascade = CascadeType.PERSIST)
+   @OneToMany(mappedBy = "person", cascade = CascadeType.PERSIST)
    List<AdressEntity> adresses;
    
    

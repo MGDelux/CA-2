@@ -40,8 +40,8 @@ public class PersonFacadeTest {
         try {
             em.getTransaction().begin();
             em.createNamedQuery("RenameMe.deleteAllRows").executeUpdate();
-            em.persist(new PersonEntity("Some txt", "More text"));
-            em.persist(new PersonEntity("aaa", "bbb"));
+            em.persist(new PersonEntity("Some txt", "More text","Hej@123.dk",22222222));
+            em.persist(new PersonEntity("aaa", "bbb","ccc@ddd.dk",33333333));
 
             em.getTransaction().commit();
         } finally {

@@ -51,9 +51,9 @@ public class PersonFacade {
         }
         return new PersonDTO(rme);
     }
-    public PersonDTO editPerson(Person p) throws PersonNotFoundException{
+    public PersonDTO editPerson(PersonEntity p) throws PersonNotFoundException{
         EntityManager em = getEntityManager();
-        Person person = em.find(Person.class, p.getId());
+        PersonEntity person = em.find(PersonEntity.class, p.getId());
         if (person == null) {
             throw new PersonNotFoundException(String.format("Person with id: (%d) not found", p.getId()));
         }
