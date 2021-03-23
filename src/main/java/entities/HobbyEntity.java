@@ -6,10 +6,13 @@
 package entities;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -33,6 +36,18 @@ public class HobbyEntity implements Serializable {
     public HobbyEntity() {
     }  
 
+     @ManyToMany
+    private PersonEntity person;
+
+    public PersonEntity getPerson() {
+        return person;
+    }
+
+    public void setPerson(PersonEntity person) {
+        this.person = person;
+    }
+     
+     
     public HobbyEntity(String name, String wikiLink, String category, String type) {
         this.name = name;
         this.wikiLink = wikiLink;

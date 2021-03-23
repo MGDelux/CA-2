@@ -1,11 +1,16 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -24,10 +29,31 @@ public class PersonEntity implements Serializable {
     public PersonEntity() {
     }  
     
-    // TODO, delete this class, or rename to an Entity class that makes sense for what you are about to do
-    // Delete EVERYTHING below if you decide to use this class, it's dummy data used for the initial demo
+   @ManyToMany(mappedBy = "persons", cascade = CascadeType.PERSIST)
+    List<HobbyEntity> activities;
 
+    @ManyToOne
+    private PhoneEntity Phones;
 
+    public PhoneEntity getPhones() {
+        return Phones;
+    }
+
+    public void setPhones(PhoneEntity Phones) {
+        this.Phones = Phones;
+    }
+    
+   
+   @OneToMany(mappedBy = "persons", cascade = CascadeType.PERSIST)
+   List<AdressEntity> adresses;
+   
+   
+    public List<HobbyEntity> getHobbyEntity() {
+        return activities;
+    }
+     
+    
+    
     public PersonEntity(String firstName, String lastName, String email, int phoneNr) {
         this.firstName = firstName;
         this.lastName = lastName;

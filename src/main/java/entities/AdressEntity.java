@@ -6,10 +6,14 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -24,6 +28,23 @@ public class AdressEntity implements Serializable {
     private Long id;
     private String streetName;
     private String additionalInfo;
+    
+    @ManyToOne
+    private PersonEntity person;
+
+    @ManyToMany(mappedBy = "adresses", cascade = CascadeType.PERSIST)
+    List<CityInfoEntity> CityInfo;
+    
+    
+    public PersonEntity getPerson() {
+        return person;
+    }
+
+    public void setPerson(PersonEntity person) {
+        this.person = person;
+    }
+    
+    
     
     public AdressEntity() {
     }  

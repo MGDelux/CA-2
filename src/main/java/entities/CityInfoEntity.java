@@ -6,10 +6,12 @@
 package entities;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -24,6 +26,21 @@ public class CityInfoEntity implements Serializable {
     @Column(length=35)
     private String city;
     @GeneratedValue(strategy = GenerationType.AUTO)
+    
+    
+    
+    
+    @ManyToOne
+    private AdressEntity adresses;
+
+    public AdressEntity getAdresses() {
+        return adresses;
+    }
+
+    public void setAdresses(AdressEntity adresses) {
+        this.adresses = adresses;
+    }
+    
     
     private Long id;
     
