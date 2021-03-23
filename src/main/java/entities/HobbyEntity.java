@@ -38,17 +38,16 @@ public class HobbyEntity implements Serializable {
     public HobbyEntity() {
     }  
 
-    @ManyToMany(mappedBy = "activities")
-    private PersonEntity person;
+    @ManyToMany
+    private List<PersonEntity> persons;
 
-    public PersonEntity getPerson() {
-        return person;
+    public List<PersonEntity> getPersons() {
+        return persons;
     }
 
-    public void setPerson(PersonEntity person) {
-        this.person = person;
+    public void setPersons(List<PersonEntity> persons) {
+        this.persons = persons;
     }
-
   
     
      
@@ -97,6 +96,11 @@ public class HobbyEntity implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "HobbyEntity{" + "id=" + id + ", name=" + name + ", wikiLink=" + wikiLink + ", category=" + category + ", type=" + type + ", persons=" + persons + '}';
     }
 
     

@@ -1,6 +1,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -29,21 +30,17 @@ public class PersonEntity implements Serializable {
     public PersonEntity() {
     }  
     
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    private HobbyEntity activities;
-    
+    @ManyToMany(mappedBy = "persons", cascade = CascadeType.PERSIST)
+    List<HobbyEntity> activities;
 
-    
-     public HobbyEntity getHobbyEntity() {
+    public List<HobbyEntity> getActivities() {
         return activities;
     }
 
-    public void setHobbyEntity(HobbyEntity activities) {
+    public void setActivities(List<HobbyEntity> activities) {
         this.activities = activities;
-        if(activities != null){
-            activities.setPerson(this);
-        }
     }
+
     
     
     public PersonEntity(String firstName, String lastName, String email, int phoneNr) {
@@ -51,6 +48,7 @@ public class PersonEntity implements Serializable {
         this.lastName = lastName;
         this.email = email;
         this.phoneNr = phoneNr;
+        this.activities = new ArrayList<>();
     }
 
     public Long getId() {
@@ -91,6 +89,11 @@ public class PersonEntity implements Serializable {
 
     public void setPhoneNr(int phoneNr) {
         this.phoneNr = phoneNr;
+    }
+
+    @Override
+    public String toString() {
+        return "PersonEntity{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", phoneNr=" + phoneNr + ", activities=" + activities + '}';
     }
     
     
