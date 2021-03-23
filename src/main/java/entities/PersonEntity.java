@@ -29,31 +29,8 @@ public class PersonEntity implements Serializable {
     public PersonEntity() {
     }  
     
-   @ManyToMany(mappedBy = "person", cascade = CascadeType.PERSIST)
-    List<HobbyEntity> activities;
 
-    @ManyToOne
-    private PhoneEntity Phones;
 
-    public PhoneEntity getPhones() {
-        return Phones;
-    }
-
-    public void setPhones(PhoneEntity Phones) {
-        this.Phones = Phones;
-    }
-    
-   
-   @OneToMany(mappedBy = "person", cascade = CascadeType.PERSIST)
-   List<AdressEntity> adresses;
-   
-   
-    public List<HobbyEntity> getHobbyEntity() {
-        return activities;
-    }
-     
-    
-    
     public PersonEntity(String firstName, String lastName, String email, int phoneNr) {
         this.firstName = firstName;
         this.lastName = lastName;

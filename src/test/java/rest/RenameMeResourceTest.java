@@ -64,13 +64,11 @@ public class RenameMeResourceTest {
     @BeforeEach
     public void setUp() {
         EntityManager em = emf.createEntityManager();
-        r1 = new PersonEntity("Some txt", "More text");
-        r2 = new PersonEntity("aaa", "bbb");
+        r1 = new PersonEntity("Some txt", "More text","emil@email",12334);
         try {
             em.getTransaction().begin();
-            em.createNamedQuery("RenameMe.deleteAllRows").executeUpdate();
+            em.createNamedQuery("Person.deleteAllRows").executeUpdate();
             em.persist(r1);
-            em.persist(r2);
             em.getTransaction().commit();
         } finally {
             em.close();

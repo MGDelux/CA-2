@@ -36,17 +36,7 @@ public class HobbyEntity implements Serializable {
     public HobbyEntity() {
     }  
 
-     @ManyToMany
-    private PersonEntity person;
 
-    public PersonEntity getPerson() {
-        return person;
-    }
-
-    public void setPerson(PersonEntity person) {
-        this.person = person;
-    }
-     
      
     public HobbyEntity(String name, String wikiLink, String category, String type) {
         this.name = name;

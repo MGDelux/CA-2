@@ -29,9 +29,7 @@ public class PhoneEntity implements Serializable {
     private int number;
     private String description;
 
-    @OneToMany(mappedBy = "Phones", cascade = CascadeType.PERSIST)
-   List<PersonEntity> Phones;
-
+  
     
     public PhoneEntity() {
     }  

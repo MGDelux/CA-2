@@ -29,22 +29,9 @@ public class AdressEntity implements Serializable {
     private String streetName;
     private String additionalInfo;
     
-    @ManyToOne
-    private PersonEntity person;
 
-    @ManyToMany(mappedBy = "adresses", cascade = CascadeType.PERSIST)
-    List<CityInfoEntity> CityInfo;
     
-    
-    public PersonEntity getPerson() {
-        return person;
-    }
 
-    public void setPerson(PersonEntity person) {
-        this.person = person;
-    }
-    
-    
     
     public AdressEntity() {
     }  

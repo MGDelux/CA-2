@@ -51,20 +51,20 @@ public class PersonFacade {
         }
         return new PersonDTO(rme);
     }
-    public PersonDTO editPerson(PersonEntity p) throws PersonNotFoundException{
+    public PersonDTO editPerson(PersonEntity p) throws Exception{
         EntityManager em = getEntityManager();
         PersonEntity person = em.find(PersonEntity.class, p.getId());
         if (person == null) {
-            throw new PersonNotFoundException(String.format("Person with id: (%d) not found", p.getId()));
+            throw new Exception(String.format("Person with id: (%d) not found", p.getId()));
         }
         person.setFirstName(p.getFirstName());
         person.setLastName(p.getLastName());
-        person.setPhone(p.getPhone());
+        person.setPhoneNr(p.getPhoneNr());
         try {
             em.getTransaction().begin();
             em.merge(person);
             em.getTransaction().commit();
-            return person;
+            return new PersonDTO(person);
         } finally {
             em.close();
         }
@@ -101,10 +101,6 @@ public class PersonFacade {
         return PersonDTO.getDtos(rms);
     }
     
-    public static void main(String[] args) {
-        emf = EMF_Creator.createEntityManagerFactory();
-        PersonFacade fe = getFacadeExample(emf);
-        fe.getAll().forEach(dto->System.out.println(dto));
-    }
+  
 
 }
