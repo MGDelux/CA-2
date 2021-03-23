@@ -26,7 +26,7 @@ public class RenameMeResourceTest {
 
     private static final int SERVER_PORT = 7777;
     private static final String SERVER_URL = "http://localhost/api";
-    private static PersonEntity r1, r2;
+    private static PersonEntity r1;
 
     static final URI BASE_URI = UriBuilder.fromUri(SERVER_URL).port(SERVER_PORT).build();
     private static HttpServer httpServer;
@@ -67,7 +67,7 @@ public class RenameMeResourceTest {
         r1 = new PersonEntity("Some txt", "More text","emil@email",12334);
         try {
             em.getTransaction().begin();
-            em.createNamedQuery("Person.deleteAllRows").executeUpdate();
+            em.createNamedQuery("PersonEntity.deleteAllRows").executeUpdate();
             em.persist(r1);
             em.getTransaction().commit();
         } finally {
@@ -78,7 +78,7 @@ public class RenameMeResourceTest {
     @Test
     public void testServerIsUp() {
         System.out.println("Testing is server UP");
-        given().when().get("/xxx").then().statusCode(200);
+        given().when().get("/Person").then().statusCode(200);
     }
 
     //This test assumes the database contains two rows
@@ -86,7 +86,7 @@ public class RenameMeResourceTest {
     public void testDummyMsg() throws Exception {
         given()
                 .contentType("application/json")
-                .get("/xxx/").then()
+                .get("/Person/").then()
                 .assertThat()
                 .statusCode(HttpStatus.OK_200.getStatusCode())
                 .body("msg", equalTo("Hello World"));
@@ -96,9 +96,9 @@ public class RenameMeResourceTest {
     public void testCount() throws Exception {
         given()
                 .contentType("application/json")
-                .get("/xxx/count").then()
+                .get("/Person/count").then()
                 .assertThat()
                 .statusCode(HttpStatus.OK_200.getStatusCode())
-                .body("count", equalTo(2));
+                .body("count", equalTo(1));
     }
 }

@@ -79,7 +79,7 @@ public class PersonFacade {
     public long getPersonHobbyCount(){
         EntityManager em = emf.createEntityManager();
         try{
-            long personHobbyCount = (long)em.createQuery("SELECT COUNT(r) FROM Person r").getSingleResult();
+            long personHobbyCount = (long)em.createQuery("SELECT COUNT(r) FROM PersonEntity r").getSingleResult();
             return personHobbyCount;
         }finally{  
             em.close();
@@ -89,14 +89,14 @@ public class PersonFacade {
     
     public List<PersonDTO> getAllPersonByHobby(){
         EntityManager em = emf.createEntityManager();
-        TypedQuery<PersonEntity> query = em.createQuery("SELECT r FROM Person r", PersonEntity.class);
+        TypedQuery<PersonEntity> query = em.createQuery("SELECT r FROM PersonEntity r", PersonEntity.class);
         List<PersonEntity> rms = query.getResultList();
         return PersonDTO.getDtos(rms);
     }
     
     public List<PersonDTO> getAllPersonByCity(){
         EntityManager em = emf.createEntityManager();
-        TypedQuery<PersonEntity> query = em.createQuery("SELECT r FROM Person r", PersonEntity.class);
+        TypedQuery<PersonEntity> query = em.createQuery("SELECT r FROM PersonEntity r", PersonEntity.class);
         List<PersonEntity> rms = query.getResultList();
         return PersonDTO.getDtos(rms);
     }
