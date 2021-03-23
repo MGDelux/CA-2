@@ -6,8 +6,11 @@
 package facades;
 
 import dtos.PersonDTO;
+import entities.HobbyEntity;
 import entities.PersonEntity;
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import utils.EMF_Creator;
 
 /**
@@ -22,7 +25,17 @@ public class Populator {
         
     }
     
-    public static void main(String[] args) {
-        populate();
+    public static void main(String[] args) {  
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
+    EntityManager em = emf.createEntityManager(); 
+    populate();
+    
+    PersonEntity p1 = new PersonEntity("Jønke","j","email",22222223);
+    
+    HobbyEntity h1 = new HobbyEntity("Fodbold","Link","General","udendørs");
+    
+    p1.setHobbyEntity(h1);
+        
+    System.out.println("Jønkes activity  " + p1.getHobbyEntity());
     }
 }
