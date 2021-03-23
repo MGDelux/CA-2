@@ -1,9 +1,12 @@
 package facades;
 
+import entities.HobbyEntity;
 import utils.EMF_Creator;
 import entities.PersonEntity;
+import java.util.HashSet;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -59,5 +62,5 @@ public class PersonFacadeTest {
         assertEquals(2, facade.getPersonHobbyCount(), "Expects two rows in the database");
     }
     
-
+    
 }

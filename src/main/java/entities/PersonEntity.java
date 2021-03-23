@@ -29,8 +29,23 @@ public class PersonEntity implements Serializable {
     public PersonEntity() {
     }  
     
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    private HobbyEntity activities;
+    
 
+    
+     public HobbyEntity getHobbyEntity() {
+        return activities;
+    }
 
+    public void setHobbyEntity(HobbyEntity activities) {
+        this.activities = activities;
+        if(activities != null){
+            activities.setPerson(this);
+        }
+    }
+    
+    
     public PersonEntity(String firstName, String lastName, String email, int phoneNr) {
         this.firstName = firstName;
         this.lastName = lastName;
