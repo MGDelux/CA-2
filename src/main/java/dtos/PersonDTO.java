@@ -20,11 +20,13 @@ public class PersonDTO {
     private String email;
     private int phoneNr;
     
-    public PersonDTO(String firstName, String lastName, String email, int phoneNr) {
+    public PersonDTO(String firstName, String lastName, String email, int phoneNr, long id) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNr = phoneNr;
+        this.id = id;
+              
     }
     
     public static List<PersonDTO> getDtos(List<PersonEntity> rms){
@@ -71,6 +73,11 @@ public class PersonDTO {
 
     public void setPhoneNr(int phoneNr) {
         this.phoneNr = phoneNr;
+    }
+
+    @Override
+    public String toString() {
+        return "PersonDTO{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", phoneNr=" + phoneNr + '}';
     }
 
     

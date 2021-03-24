@@ -30,7 +30,6 @@ public class PersonEntity implements Serializable {
     }  
     
 
-
     public PersonEntity(String firstName, String lastName, String email, int phoneNr) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -76,6 +75,11 @@ public class PersonEntity implements Serializable {
 
     public void setPhoneNr(int phoneNr) {
         this.phoneNr = phoneNr;
+    }
+
+    @Override
+    public String toString() {
+        return "PersonEntity{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", phoneNr=" + phoneNr + '}';
     }
     
     
