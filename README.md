@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.com/MGDelux/CA-2.svg?branch=main)](https://travis-ci.com/MGDelux/CA-2)
-
+[![Build Status](https://travis-ci.com/MGDelux/CA-2.svg?branch=master)](https://travis-ci.com/MGDelux/CA-2)
 ### *SolidCode CA-2 *
 
 *Team Members:*
