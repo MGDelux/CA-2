@@ -65,6 +65,7 @@ public class RenameMeResourceTest {
     public void setUp() {
         EntityManager em = emf.createEntityManager();
         r1 = new PersonEntity("Some txt", "More text","emil@email",12334);
+        System.out.println(r1);
         try {
             em.getTransaction().begin();
             em.createNamedQuery("PersonEntity.deleteAllRows").executeUpdate();
@@ -78,7 +79,7 @@ public class RenameMeResourceTest {
     @Test
     public void testServerIsUp() {
         System.out.println("Testing is server UP");
-        given().when().get("/Person").then().statusCode(200);
+        given().when().get("/person").then().statusCode(200);
     }
 
     //This test assumes the database contains two rows
@@ -86,19 +87,10 @@ public class RenameMeResourceTest {
     public void testDummyMsg() throws Exception {
         given()
                 .contentType("application/json")
-                .get("/Person/").then()
+                .get("/person/").then()
                 .assertThat()
                 .statusCode(HttpStatus.OK_200.getStatusCode())
                 .body("msg", equalTo("Hello World"));
     }
 
-    @Test
-    public void testCount() throws Exception {
-        given()
-                .contentType("application/json")
-                .get("/Person/count").then()
-                .assertThat()
-                .statusCode(HttpStatus.OK_200.getStatusCode())
-                .body("count", equalTo(1));
-    }
 }

@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
+import javax.ws.rs.WebApplicationException;
 import utils.EMF_Creator;
 
 /**
@@ -39,23 +40,22 @@ public class PersonFacade {
         return emf.createEntityManager();
     }
     
-    public PersonDTO createPerson(PersonDTO rm){
-        PersonEntity rme = new PersonEntity(rm.getFirstName(), rm.getLastName(), rm.getEmail(), rm.getPhoneNr());
+    public PersonDTO createPerson(PersonEntity rm){
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            em.persist(rme);
+            em.persist(rm);
             em.getTransaction().commit();
         } finally {
             em.close();
         }
-        return new PersonDTO(rme);
+        return new PersonDTO(rm);
     }
-    public PersonDTO editPerson(PersonEntity p) throws Exception{
+    public PersonDTO editPerson(PersonEntity p) throws WebApplicationException{
         EntityManager em = getEntityManager();
         PersonEntity person = em.find(PersonEntity.class, p.getId());
         if (person == null) {
-            throw new Exception(String.format("Person with id: (%d) not found", p.getId()));
+            throw new WebApplicationException(String.format("Person with id: (%d) not found", p.getId()));
         }
         person.setFirstName(p.getFirstName());
         person.setLastName(p.getLastName());
@@ -68,6 +68,19 @@ public class PersonFacade {
         } finally {
             em.close();
         }
+    }
+    
+     public List<PersonDTO> getAllPersons(){
+        
+        EntityManager em = emf.createEntityManager();
+          List<PersonEntity> rms;
+        try{
+        TypedQuery<PersonEntity> query = em.createQuery("SELECT p FROM PersonEntity p", PersonEntity.class);
+        rms = query.getResultList();
+        }catch(Exception e){
+     throw new WebApplicationException("Internal Server Problem. We are sorry for the inconvenience",500);
+    }
+        return PersonDTO.getDtos(rms);
     }
     
     public PersonDTO getById(long id){
