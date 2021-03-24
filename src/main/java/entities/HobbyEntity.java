@@ -6,6 +6,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -36,7 +38,18 @@ public class HobbyEntity implements Serializable {
     public HobbyEntity() {
     }  
 
+    @ManyToMany
+    private List<PersonEntity> persons;
 
+    public List<PersonEntity> getPersons() {
+        return persons;
+    }
+
+    public void setPersons(List<PersonEntity> persons) {
+        this.persons = persons;
+    }
+  
+    
      
     public HobbyEntity(String name, String wikiLink, String category, String type) {
         this.name = name;
@@ -83,6 +96,11 @@ public class HobbyEntity implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "HobbyEntity{" + "id=" + id + ", name=" + name + ", wikiLink=" + wikiLink + ", category=" + category + ", type=" + type + ", persons=" + persons + '}';
     }
 
     

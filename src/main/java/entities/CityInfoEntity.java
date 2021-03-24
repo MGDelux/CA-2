@@ -77,6 +77,11 @@ public class CityInfoEntity implements Serializable {
         this.city = city;
     }
 
+    @Override
+    public String toString() {
+        return "CityInfoEntity{" + "zipCode=" + zipCode + ", city=" + city + ", adresses=" + adresses + ", id=" + id + '}';
+    }
+
     
     
 }

@@ -14,6 +14,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -28,9 +30,7 @@ public class AdressEntity implements Serializable {
     private Long id;
     private String streetName;
     private String additionalInfo;
-    
-
-    
+ 
 
     
     public AdressEntity() {
@@ -63,6 +63,11 @@ public class AdressEntity implements Serializable {
 
     public void setAdditionalInfo(String additionalInfo) {
         this.additionalInfo = additionalInfo;
+    }
+
+    @Override
+    public String toString() {
+        return "AdressEntity{" + "id=" + id + ", streetName=" + streetName + ", additionalInfo=" + additionalInfo + '}';
     }
     
     
