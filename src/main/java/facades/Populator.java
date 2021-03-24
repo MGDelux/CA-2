@@ -6,6 +6,7 @@
 package facades;
 
 import dtos.PersonDTO;
+import entities.AdressEntity;
 import entities.HobbyEntity;
 import entities.PersonEntity;
 import java.util.ArrayList;
@@ -35,6 +36,10 @@ public class Populator {
     
     PersonEntity p1 = new PersonEntity("Jønke","j","email",22222223);
     
+    AdressEntity a1 = new AdressEntity("Lyngbyvej 132","privat telefon");
+    
+    p1.setAddress(a1);
+    
     
     List<HobbyEntity> activities = new ArrayList<HobbyEntity>();
     
@@ -43,11 +48,15 @@ public class Populator {
     p1.setActivities(activities);
         
         
-        
-    System.out.println("Jønkes activity  " + p1.getActivities());
-    
      em.getTransaction().begin();
      em.persist(p1);
      em.getTransaction().commit();
+    
+        
+    System.out.println("Jønkes activity  " + p1.getActivities());
+    
+    System.out.println("Jønkes adresse  " + p1.getAddress());
+    
+   
     }
 }

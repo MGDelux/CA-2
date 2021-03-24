@@ -12,6 +12,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 
 @Entity
@@ -29,6 +30,19 @@ public class PersonEntity implements Serializable {
     
     public PersonEntity() {
     }  
+    
+     @ManyToOne(cascade = CascadeType.PERSIST)
+    private AdressEntity address;
+
+    public AdressEntity getAddress() {
+        return address;
+    }
+
+    public void setAddress(AdressEntity address) {
+        this.address = address;
+    }
+    
+    
     
     @ManyToMany(mappedBy = "persons", cascade = CascadeType.PERSIST)
     List<HobbyEntity> activities;
@@ -93,8 +107,10 @@ public class PersonEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "PersonEntity{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", phoneNr=" + phoneNr + ", activities=" + activities + '}';
+        return "PersonEntity{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", phoneNr=" + phoneNr + ", address=" + address + ", activities=" + activities + '}';
     }
+
+   
     
     
     
