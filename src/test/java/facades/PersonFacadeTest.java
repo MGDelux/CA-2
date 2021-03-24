@@ -59,7 +59,7 @@ public class PersonFacadeTest {
     // TODO: Delete or change this method 
     @Test
     public void testAFacadeMethod() {
-        assertEquals(2, facade.getPersonHobbyCount(), "Expects two rows in the database");
+     //   assertEquals(2, facade.getPersonHobbyCount(), "Expects two rows in the database");
     }
     
     
