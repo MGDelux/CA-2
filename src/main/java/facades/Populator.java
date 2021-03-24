@@ -5,6 +5,8 @@
  */
 package facades;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import dtos.PersonDTO;
 import entities.PersonEntity;
 import javax.persistence.EntityManagerFactory;
@@ -15,11 +17,15 @@ import utils.EMF_Creator;
  * @author tha
  */
 public class Populator {
+        private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory();
+       
+    private static final PersonFacade FACADE =  PersonFacade.getFacadeExample(EMF);
+    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     public static void populate(){
         EntityManagerFactory emf = EMF_Creator.createEntityManagerFactory();
-        PersonFacade fe = PersonFacade.getFacadeExample(emf);
-        fe.createPerson(new PersonDTO(new PersonEntity("First 1", "Last 1","EMAIL",12345)));
-        
+        PersonFacade pf = PersonFacade.getFacadeExample(emf);
+       PersonEntity pe = new PersonEntity("fnavn","enavn","email",1234);
+       pf.createPerson(pe);
     }
     
     public static void main(String[] args) {
