@@ -63,6 +63,11 @@ public class PhoneEntity implements Serializable {
         this.description = description;
     }
 
+    @Override
+    public String toString() {
+        return "PhoneEntity{" + "id=" + id + ", number=" + number + ", description=" + description + '}';
+    }
+
     
     
 }

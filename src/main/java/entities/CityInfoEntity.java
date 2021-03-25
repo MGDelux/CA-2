@@ -11,7 +11,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 /**
  *
@@ -20,27 +19,14 @@ import javax.persistence.ManyToOne;
 @Entity
 public class CityInfoEntity implements Serializable {
     private static final long serialVersionUID = 1L;
+        @GeneratedValue(strategy = GenerationType.AUTO)
+
     @Id
     @Column(length = 4)
     private String zipCode;
     @Column(length=35)
     private String city;
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    
-    
-    
-    
-    @ManyToOne
-    private AdressEntity adresses;
-
-    public AdressEntity getAdresses() {
-        return adresses;
-    }
-
-    public void setAdresses(AdressEntity adresses) {
-        this.adresses = adresses;
-    }
-    
+   
     
     private Long id;
     
@@ -79,8 +65,10 @@ public class CityInfoEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "CityInfoEntity{" + "zipCode=" + zipCode + ", city=" + city + ", adresses=" + adresses + ", id=" + id + '}';
+        return "CityInfoEntity{" + "zipCode=" + zipCode + ", city=" + city + '}';
     }
+
+    
 
     
     

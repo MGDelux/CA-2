@@ -9,6 +9,7 @@ import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -20,24 +21,30 @@ public class PersonResource {
        
     private static final PersonFacade FACADE =  PersonFacade.getFacadeExample(EMF);
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-     @Path("all")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String all(){
         List<PersonDTO> p = FACADE.getAllPersons();
         return GSON.toJson(p);
     }
+    @Path("/{hobby}")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public String demo() {
-        return "{\"msg\":\"Hello World\"}";
+    public String hobby(@PathParam("hobby")String hobby) throws Exception{
+        System.out.println(hobby);
+        List<PersonDTO> p = FACADE.getAllPersonByHobby(hobby);
+        System.out.println(p);
+        return GSON.toJson(p);
     }
-    @Path("count")
+     @Path("/city/{city}")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public String getRenameMeCount() {
-      //  long count = FACADE.getPersonHobbyCount();
-        //System.out.println("--------------->"+count);
-        return "{\"count\":"+1+"}";  //Done manually so no need for a DTO
-    }
+         public String city(@PathParam("city")String city) throws Exception{
+                     System.out.println(city);
+              List<PersonDTO> p = FACADE.getAllPersonByCity(city);
+              System.out.println(p);
+        return GSON.toJson(p);
+         }
+         
+
 }

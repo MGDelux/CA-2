@@ -6,16 +6,12 @@
 package entities;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 /**
  *
@@ -30,11 +26,32 @@ public class AdressEntity implements Serializable {
     private Long id;
     private String streetName;
     private String additionalInfo;
- 
+  private PersonEntity person; 
+ @ManyToOne(cascade = CascadeType.PERSIST)
+   private CityInfoEntity cityInfo; 
 
+    public CityInfoEntity getCityInfo() {
+        return cityInfo;
+    }
+
+    public void setCityInfo(CityInfoEntity cityInfo) {
+        this.cityInfo = cityInfo;
+    }
+
+   
     
     public AdressEntity() {
     }  
+
+    public PersonEntity getPerson() {
+        return person;
+    }
+
+    public void setPerson(PersonEntity person) {
+        this.person = person;
+        //WGFF
+    }
+   
     
     public AdressEntity(String streetName, String additionalInfo) {
         this.streetName = streetName;
@@ -67,9 +84,12 @@ public class AdressEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "AdressEntity{" + "id=" + id + ", streetName=" + streetName + ", additionalInfo=" + additionalInfo + '}';
+        return "AdressEntity{" + "streetName=" + streetName + ", additionalInfo=" + additionalInfo + ", cityInfo=" + cityInfo + '}';
     }
-    
+
+ 
+
+   
     
     
 }

@@ -6,6 +6,7 @@
 package dtos;
 
 import entities.AdressEntity;
+import entities.CityInfoEntity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ public class AdressDTO {
     private Long id;
     private String streetName;
     private String additionalInfo;
+    private CityInfoEntity cityinfo;
     
     public AdressDTO(String streetName, String additionalInfo) {
         this.streetName = streetName;
@@ -30,6 +32,7 @@ public class AdressDTO {
         this.id = rm.getId();
         this.streetName = rm.getStreetName();
         this.additionalInfo = rm.getAdditionalInfo();
+        this.cityinfo = rm.getCityInfo();
     }  
 
     public String getStreetName() {
@@ -46,6 +49,19 @@ public class AdressDTO {
 
     public void setAdditionalInfo(String additionalInfo) {
         this.additionalInfo = additionalInfo;
+    }
+
+    public CityInfoEntity getCityinfo() {
+        return cityinfo;
+    }
+
+    public void setCityinfo(CityInfoEntity cityinfo) {
+        this.cityinfo = cityinfo;
+    }
+
+    @Override
+    public String toString() {
+        return "AdressDTO{" + "id=" + id + ", streetName=" + streetName + ", additionalInfo=" + additionalInfo + ", cityinfo=" + cityinfo + '}';
     }
     
     

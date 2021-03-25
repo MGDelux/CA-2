@@ -49,6 +49,11 @@ public class CityInfoDTO {
     public void setCity(String city) {
         this.city = city;
     }
+
+    @Override
+    public String toString() {
+        return "CityInfoDTO{" + "zipCode=" + zipCode + ", city=" + city + ", id=" + id + '}';
+    }
         
         
     

@@ -1,7 +1,9 @@
 package facades;
 
 import dtos.PersonDTO;
+import entities.HobbyEntity;
 import entities.PersonEntity;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -59,7 +61,7 @@ public class PersonFacade {
         }
         person.setFirstName(p.getFirstName());
         person.setLastName(p.getLastName());
-        person.setPhoneNr(p.getPhoneNr());
+        person.setPhoneInfomation(p.getPhoneInfomation());
         try {
             em.getTransaction().begin();
             em.merge(person);
@@ -100,18 +102,48 @@ public class PersonFacade {
         
     }
     
-    public List<PersonDTO> getAllPersonByHobby(){
+    public List<PersonDTO> getAllPersonByHobby(String hobby){
         EntityManager em = emf.createEntityManager();
+        
+        try{
         TypedQuery<PersonEntity> query = em.createQuery("SELECT r FROM PersonEntity r", PersonEntity.class);
         List<PersonEntity> rms = query.getResultList();
-        return PersonDTO.getDtos(rms);
+        List<PersonEntity> hobbyListTemp = new ArrayList<>();
+        for(PersonEntity p : rms){
+            if (p.getHobby().toString().toLowerCase().contains(hobby.toLowerCase()))
+            {
+                System.out.println(p);
+                hobbyListTemp.add(p);
+                
+            }
+        }
+         return PersonDTO.getDtos(hobbyListTemp);
+        }finally{
+            em.close();
+        }
+     
     }
     
-    public List<PersonDTO> getAllPersonByCity(){
-        EntityManager em = emf.createEntityManager();
+    public List<PersonDTO> getAllPersonByCity(String city){    
+      EntityManager em = emf.createEntityManager();
+ 
+        try{
         TypedQuery<PersonEntity> query = em.createQuery("SELECT r FROM PersonEntity r", PersonEntity.class);
         List<PersonEntity> rms = query.getResultList();
-        return PersonDTO.getDtos(rms);
+        List<PersonEntity> cityListTemp = new ArrayList<>();
+        for(PersonEntity p : rms){
+            if (p.getAddress().toString().toLowerCase().contains(city.toLowerCase()))
+            {
+                System.out.println(p);
+                cityListTemp.add(p);
+                
+            }
+        }
+         return PersonDTO.getDtos(cityListTemp);
+        }finally{
+            em.close();
+        }
+     
     }
     
   
