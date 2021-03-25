@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 /**
@@ -21,6 +22,8 @@ import javax.persistence.OneToOne;
  * @author zarpy
  */
 @Entity
+@NamedQuery(name = "HobbyEntity.deleteAllRows", query = "DELETE from HobbyEntity")
+
 public class HobbyEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

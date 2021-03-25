@@ -21,13 +21,29 @@ public class PersonResource {
        
     private static final PersonFacade FACADE =  PersonFacade.getFacadeExample(EMF);
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
+     @Path("/status")
+     @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public String apiStatus(){
+   return "{\"msg\":\"Person API Online\"}";
+    }
+ 
+    @Path("/{id}")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public String getbyid(@PathParam("id")long id) throws Exception{
+        System.out.println(id);
+        PersonDTO p = FACADE.getById(id);
+        System.out.println(p);
+        return GSON.toJson(p);
+    }
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String all(){
         List<PersonDTO> p = FACADE.getAllPersons();
         return GSON.toJson(p);
     }
-    @Path("/{hobby}")
+    @Path("/hobby/{hobby}")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String hobby(@PathParam("hobby")String hobby) throws Exception{

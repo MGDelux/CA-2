@@ -45,7 +45,7 @@ public class Populator {
     PersonEntity p1 = new PersonEntity("Jønke","j","email");
        PersonEntity p2 = new PersonEntity("Ali","A","email@ali.com");
     CityInfoEntity cie = new CityInfoEntity("3400","HILLERØD");
-     CityInfoEntity cie2 = new CityInfoEntity("1080","KØB EN HAVN");
+     CityInfoEntity cie2 = new CityInfoEntity("10","KØB EN HAVN");
     AdressEntity a1 = new AdressEntity("Lyngbyvej 132","privat telefon");
     AdressEntity a2 = new AdressEntity("Pøls 132","privat telefon");
         PhoneEntity ph1 = new PhoneEntity(342432234,"SOME VIRGINS PHONE");
