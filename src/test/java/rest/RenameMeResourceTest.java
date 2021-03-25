@@ -76,7 +76,7 @@ public class RenameMeResourceTest {
         }
     }
 
-    @Test
+  /*  @Test
     public void testServerIsUp() {
         System.out.println("Testing is server UP");
         given().when().get("/person").then().statusCode(200);
@@ -92,5 +92,5 @@ public class RenameMeResourceTest {
                 .statusCode(HttpStatus.OK_200.getStatusCode())
                 .body("msg", equalTo("Hello World"));
     }
-
+*/
 }
