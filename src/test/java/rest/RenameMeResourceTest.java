@@ -64,7 +64,7 @@ public class RenameMeResourceTest {
     @BeforeEach
     public void setUp() {
         EntityManager em = emf.createEntityManager();
-        r1 = new PersonEntity("Some txt", "More text","emil@email",12334);
+        r1 = new PersonEntity("Some txt", "More text","emil@email");
         System.out.println(r1);
         try {
             em.getTransaction().begin();

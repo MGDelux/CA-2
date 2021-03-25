@@ -42,8 +42,8 @@ public class PersonFacadeTest {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            em.persist(new PersonEntity("Some txt", "More text","Hej@123.dk",22222222));
-            em.persist(new PersonEntity("aaa", "bbb","ccc@ddd.dk",33333333));
+            em.persist(new PersonEntity("Some txt", "More text","Hej@123.dk"));
+            em.persist(new PersonEntity("aaa", "bbb","ccc@ddd.dk"));
 
             em.getTransaction().commit();
         } finally {

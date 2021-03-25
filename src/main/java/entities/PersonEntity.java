@@ -3,8 +3,10 @@ package entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,43 +28,20 @@ public class PersonEntity implements Serializable {
     private String firstName;
     private String lastName;
     private String email;
-    private int phoneNr;
-    
-    public PersonEntity() {
-    }  
-    
+       @OneToMany(targetEntity = PhoneEntity.class,cascade = CascadeType.PERSIST)
+    private List<PhoneEntity> phoneInfomation;
+    @OneToMany(targetEntity = HobbyEntity.class,cascade = CascadeType.PERSIST, fetch=FetchType.EAGER)
+    private List<HobbyEntity> hobby;
      @ManyToOne(cascade = CascadeType.PERSIST)
     private AdressEntity address;
 
-    public AdressEntity getAddress() {
-        return address;
-    }
-
-    public void setAddress(AdressEntity address) {
-        this.address = address;
-    }
+    public PersonEntity() {
+    }  
     
-    
-    
-    @ManyToMany(mappedBy = "persons", cascade = CascadeType.PERSIST)
-    List<HobbyEntity> activities;
-
-    public List<HobbyEntity> getActivities() {
-        return activities;
-    }
-
-    public void setActivities(List<HobbyEntity> activities) {
-        this.activities = activities;
-    }
-
-    
-    
-    public PersonEntity(String firstName, String lastName, String email, int phoneNr) {
+    public PersonEntity(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.phoneNr = phoneNr;
-        this.activities = new ArrayList<>();
     }
 
     public Long getId() {
@@ -96,24 +75,46 @@ public class PersonEntity implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public int getPhoneNr() {
-        return phoneNr;
+    
+   
+    public AdressEntity getAddress() {
+        return address;
     }
 
-    public void setPhoneNr(int phoneNr) {
-        this.phoneNr = phoneNr;
+    public List<PhoneEntity> getPhoneInfomation() {
+        return phoneInfomation;
+    }
+
+    public void setPhoneInfomation(List<PhoneEntity> phoneInfomation) {
+        this.phoneInfomation = phoneInfomation;
+    }
+
+   
+
+    public void setAddress(AdressEntity address) {
+        this.address = address;
+        if(address != null){
+            address.setPerson(this);
+            
+        }
+    }
+
+    public List<HobbyEntity> getHobby() {
+        return hobby;
+    }
+
+    public void setHobby(List<HobbyEntity> hobby) {
+        this.hobby = hobby;
     }
 
     @Override
     public String toString() {
-        return "PersonEntity{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", phoneNr=" + phoneNr + ", address=" + address + ", activities=" + activities + '}';
+        return "PersonEntity{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", phoneInfomation=" + phoneInfomation + ", hobby=" + hobby + ", address=" + address + '}';
     }
 
-   
-    
-    
-    
+
+
+
 
    
 }
