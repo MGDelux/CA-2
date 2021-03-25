@@ -6,7 +6,6 @@
 - Mathias
 - Søren
 
-### Preconditions
 * API Documentation:
 * https://solidcode.xyz/api/
 * Front end:
