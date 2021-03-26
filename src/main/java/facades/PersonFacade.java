@@ -3,6 +3,7 @@ package facades;
 import dtos.PersonDTO;
 import entities.HobbyEntity;
 import entities.PersonEntity;
+import static java.lang.String.format;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,6 +11,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import static javax.ws.rs.core.Response.Status.BAD_REQUEST;
+import static javax.ws.rs.core.Response.Status.OK;
 import utils.EMF_Creator;
 
 /**
@@ -100,6 +105,28 @@ public class PersonFacade {
             em.close();
         }
         
+    }
+    public PersonDTO addPerson(PersonEntity person){
+              EntityManager em = emf.createEntityManager();
+              if(person.getAddress() == null || person.getHobby() ==null || person.getPhoneInfomation() == null || person.getFirstName() == null){
+                   throw new WebApplicationException(Response
+          .status(BAD_REQUEST)
+          .type(MediaType.APPLICATION_JSON)
+          .entity(format("Missing info please check %s", person.toString()))
+          .build());
+              }
+            try{
+                em.getTransaction().begin();
+                em.persist(person);
+                em.getTransaction().commit();
+                System.out.println(person);
+               
+            }catch(Exception e){
+                  throw new WebApplicationException("Internal Server Problem. We are sorry for the inconvenience",500);
+            }finally{
+                em.close();
+            }
+       return new PersonDTO(person);
     }
     
     public List<PersonDTO> getAllPersonByHobby(String hobby){

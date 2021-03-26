@@ -41,7 +41,6 @@ public class Populator {
     public static void main(String[] args) {  
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
     EntityManager em = emf.createEntityManager(); 
-    
     PersonEntity p1 = new PersonEntity("Jønke","j","email");
        PersonEntity p2 = new PersonEntity("Ali","A","email@ali.com");
     CityInfoEntity cie = new CityInfoEntity("3400","HILLERØD");
@@ -77,8 +76,7 @@ phon.add(ph1);
      em.persist(p2);
      em.getTransaction().commit();
         System.out.println("Håndbold person" +FACADE.getAllPersonByHobby("HÅNDBOLD"));
-        
-    System.out.println("Jønkes activity  " + p1.getHobby());
+        System.out.println("Jønkes activity  " + p1.getHobby());
     
     System.out.println("Jønkes adresse  " + p1.getAddress());
      System.out.println("Jønkes tlf  " + p1.getPhoneInfomation());

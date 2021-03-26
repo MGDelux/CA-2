@@ -112,6 +112,8 @@ public class PersonEntity implements Serializable {
         return "PersonEntity{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", phoneInfomation=" + phoneInfomation + ", hobby=" + hobby + ", address=" + address + '}';
     }
 
+ 
+
 
 
 
