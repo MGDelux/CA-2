@@ -83,23 +83,18 @@ document.getElementById("phoneb").onclick = function(){
     });
     }
 
-function GetAllZipCodes(){
-        fetch("/ca2/api/person/zipcodes").then( res => res.json()).then(data =>{
+document.getElementById("zipcodeb").onclick = function(){
+        fetch("/ca2/api/cityinfo").then( res => res.json()).then(data =>{
         let zipcodes = data;
-        let table = document.getElementById('table');
+        let table = document.getElementById('table-zip');
         clearTable();
         for(i = 0; i < zipcodes.length; i++ ){
-                var row = `<table class="table" id="table2">
-                <thead class="thead-dark">
-                    <th scope="col">Zipcode</th>
-                    <th scope="col">City</th>
-                </thead>
-                <tbody>
+                var row = `
                         <tr> 
-                        <td>${zipcodes[i].adress.cityinfo.zipCode}</td>
-                        <td>${zipcodes[i].adress.cityinfo.city}</td>
+                        <td>${zipcodes[i].zipCode}</td>
+                        <td>${zipcodes[i].city}</td>
                          </tr>
-                </tbody>        
+                       
             `;
             table.innerHTML += row;
         };
@@ -127,14 +122,14 @@ document.getElementById("CreateUser").onclick = function() {
 }
 
 
-document.getElementById("populate").onclick = function(){
+document.getElementById("hobbies").onclick = function(){
         fetch("/ca2/api/person/").then( res => res.json()).then(data =>{
         let hobby = data;
         let table = document.getElementById('dropdown');
         
         for(i = 0; i < hobby.length; i++ ){
                 var row = `
-                        <button class="dropdown-item" type="button">${hobby[i].hobbies[0].name}</button>
+                        <option value="${hobby[i].hobbies[0].name}">${hobby[i].hobbies[0].name}</option>
                         `;
             table.innerHTML += row;
         };

@@ -30,11 +30,24 @@ and open the template in the editor.
         <input type="text" id="phone" placeholder="Search for Phonenumber">
         <input type="button" id="phoneb" class="btn btn-dark" value="filter by Phonenumber">
     </div>
+    <div>
+        <button type="button" id="zipcodeb" class="btn-dark">Get zipcodes</button>
+    </div>
         
         
 </div>     
     </div>
-    <body>
+    <div>
+        <h1>Zipcodes:</h1>
+            <table class="table" id="table-zip">
+                <thead class="thead-dark">
+                    <th scope="col">Zipcode</th>
+                    <th scope="col">City</th>
+                    </thead>
+                <tbody>
+                     </tbody>
+            </table>
+    </div>
         <div>
             <h1>Table:</h1>
             <table class="table" id="table">
@@ -62,15 +75,19 @@ and open the template in the editor.
          <input type="text" id="lname" placeholder="Lastname">
          <input type="text" id="Email" placeholder="Email">
          <input type="text" id="phonenumber" placeholder="Phonenumber">
-         <div class="btn-group">
-            <button id="populate" type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           Pick your favorite hobby
-            </button>
-             <div class="dropdown-menu dropdown-menu-right" id="dropdown">
+         
+         <form action="/action_page.php">
+            <label for="cars">Choose a hobby:</label>
+            <button type="button" id="hobbies" class="btn btn-dark">load hobbies</button>
+                <select name="hobbies">
+                    <div class="dropdown-menu dropdown-menu-right" id="dropdown">
                
-             </div>
+                    </div>
+                 </select>
+            </form>
+             <button type="button" class="btn-success">Add user</button>
         </div>
-         <button type="button" class="btn-success">Add user</button>
+         
         </div>
         <script src="javascript.js"></script>
     </body>
