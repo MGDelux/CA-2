@@ -12,12 +12,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author zarpy
  */
 @Entity
+@NamedQuery(name = "AdressEntity.deleteAllRows", query = "DELETE from AdressEntity")
+
 public class AdressEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

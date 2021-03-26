@@ -28,7 +28,7 @@ public class PersonEntity implements Serializable {
     private String firstName;
     private String lastName;
     private String email;
-       @OneToMany(targetEntity = PhoneEntity.class,cascade = CascadeType.PERSIST)
+       @OneToMany(targetEntity = PhoneEntity.class,cascade = CascadeType.PERSIST,fetch=FetchType.EAGER)
     private List<PhoneEntity> phoneInfomation;
     @OneToMany(targetEntity = HobbyEntity.class,cascade = CascadeType.PERSIST, fetch=FetchType.EAGER)
     private List<HobbyEntity> hobby;
@@ -111,6 +111,8 @@ public class PersonEntity implements Serializable {
     public String toString() {
         return "PersonEntity{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", phoneInfomation=" + phoneInfomation + ", hobby=" + hobby + ", address=" + address + '}';
     }
+
+ 
 
 
 

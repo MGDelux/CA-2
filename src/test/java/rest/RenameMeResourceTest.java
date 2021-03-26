@@ -1,11 +1,14 @@
 package rest;
 
+import entities.AdressEntity;
+import entities.CityInfoEntity;
 import entities.PersonEntity;
 import utils.EMF_Creator;
 import io.restassured.RestAssured;
 import static io.restassured.RestAssured.given;
 import io.restassured.parsing.Parser;
 import java.net.URI;
+import java.util.HashSet;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.core.UriBuilder;
@@ -26,19 +29,21 @@ public class RenameMeResourceTest {
 
     private static final int SERVER_PORT = 7777;
     private static final String SERVER_URL = "http://localhost/api";
-    private static PersonEntity r1;
+    private static PersonEntity r1, r2;
 
     static final URI BASE_URI = UriBuilder.fromUri(SERVER_URL).port(SERVER_PORT).build();
     private static HttpServer httpServer;
     private static EntityManagerFactory emf;
 
     static HttpServer startServer() {
+        System.out.println("Starting server: " +BASE_URI + "   ///" + SERVER_PORT);
         ResourceConfig rc = ResourceConfig.forApplication(new ApplicationConfig());
         return GrizzlyHttpServerFactory.createHttpServer(BASE_URI, rc);
     }
 
     @BeforeAll
     public static void setUpClass() {
+        System.out.println("Setting up Classes EMF");
         //This method must be called before you request the EntityManagerFactory
         EMF_Creator.startREST_TestWithDB();
         emf = EMF_Creator.createEntityManagerFactoryForTest();
@@ -64,7 +69,8 @@ public class RenameMeResourceTest {
     @BeforeEach
     public void setUp() {
         EntityManager em = emf.createEntityManager();
-        r1 = new PersonEntity("Some txt", "More text","emil@email");
+          
+        r1 = new PersonEntity("name", "More text","mail");
         System.out.println(r1);
         try {
             em.getTransaction().begin();
@@ -76,21 +82,14 @@ public class RenameMeResourceTest {
         }
     }
 
-  /*  @Test
-    public void testServerIsUp() {
-        System.out.println("Testing is server UP");
-        given().when().get("/person").then().statusCode(200);
-    }
-
-    //This test assumes the database contains two rows
     @Test
-    public void testDummyMsg() throws Exception {
-        given()
-                .contentType("application/json")
-                .get("/person/").then()
-                .assertThat()
-                .statusCode(HttpStatus.OK_200.getStatusCode())
-                .body("msg", equalTo("Hello World"));
+    public void testCityAPIOnline() {
+      //  System.out.println("Testing is testCityAPIOnline UP");
+     //   given().when().get("/city").then().statusCode(200);
+
     }
-*/
-}
+     @Test
+    public void testPersonApiOnline() {
+     //  System.out.println("Testing is testPersonApiOnline UP");
+      //  given().contentType("application/json").get("/person/status").then().assertThat().statusCode(HttpStatus.OK_200.getStatusCode()).body("msg", equalTo("Person API Online"));
+    }
