@@ -180,7 +180,8 @@ public class PersonFacade {
         TypedQuery<PersonEntity> query = em.createQuery("SELECT r FROM PersonEntity r", PersonEntity.class);
         List<PersonEntity> rms = query.getResultList();
         for(PersonEntity p : rms){
-        if(p.getPhoneInfomation().contains(phonenr)){
+            System.out.println(p.getPhoneInfomation().toString());
+        if(p.getPhoneInfomation().toString().toLowerCase().contains(phonenr)){
             persons.add(p);
         }       
  }
