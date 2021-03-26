@@ -56,7 +56,7 @@ phon.add(ph1);
     ArrayList<HobbyEntity> activities = new ArrayList<>();
     ArrayList<HobbyEntity> activities1 = new ArrayList<>();
     HobbyEntity h1 = new HobbyEntity("HÅNDBOLD","Link","General","udendørs");
-    HobbyEntity h2 = new HobbyEntity("FODBALLLLLL","Link","General","udendørs");
+    HobbyEntity h2 = new HobbyEntity("fodbold","Link","General","udendørs");
     a1.setCityInfo(cie);
     a2.setCityInfo(cie2);
         p1.setAddress(a1);

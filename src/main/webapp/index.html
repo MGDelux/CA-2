@@ -10,7 +10,6 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="CSS.css">
        
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -21,23 +20,16 @@ and open the template in the editor.
     Filter:
     <div> 
         <input type="text" id="hobby" placeholder="Search for hobby">
-        <input type="button" class="btn btn-dark" value="filter by hobby">
+        <input type="button" id="hobbyb" class="btn btn-dark" value="filter by hobby">
     </div>    
     <div>
-        <input type="text" id="number_price" placeholder="Search for city">
-        <input type="button" class="btn btn-dark" value="filter by city">
+        <input type="text" id="city" placeholder="Search for city">
+        <input type="button" id="cityb" class="btn btn-dark" value="filter by city">
     </div>    
-        
-<div class="btn-group">
-  <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Vælg mærke
-  </button>
-  <div class="dropdown-menu dropdown-menu-right">
-    <button class="dropdown-item" type="button">Volvo</button>
-    <button class="dropdown-item" type="button">Hyundai</button>
-    <button class="dropdown-item" type="button">Bmw</button>
-  </div>
-</div>
+    <div>
+        <input type="text" id="phone" placeholder="Search for Phonenumber">
+        <input type="button" id="phoneb" class="btn btn-dark" value="filter by Phonenumber">
+    </div>
         
         
 </div>     
@@ -56,15 +48,30 @@ and open the template in the editor.
                     <th scope="col">Zipcode</th>
                     <th scope="col">City</th>
                 </thead>
-                <tbody id="tbody">
-                <div id="table-div">
-                    
-                </div>
+                <tbody>
+                
                 </tbody>
             </table>
         </div>
         
-        <button type="button" class="btn btn-dark">Get persons</button>
+        <button type="button" id="GetPersons" class="btn btn-dark">Get persons</button>
+        
+        <button type="button" id="CreateUser" class="btn btn-dark">Create User</button>
+        <div id="myDIV" style="visibility: hidden">
+         <input type="text" id="fname" placeholder="Firstname">
+         <input type="text" id="lname" placeholder="Lastname">
+         <input type="text" id="Email" placeholder="Email">
+         <input type="text" id="phonenumber" placeholder="Phonenumber">
+         <div class="btn-group">
+            <button id="populate" type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           Pick your favorite hobby
+            </button>
+             <div class="dropdown-menu dropdown-menu-right" id="dropdown">
+               
+             </div>
+        </div>
+         <button type="button" class="btn-success">Add user</button>
+        </div>
         <script src="javascript.js"></script>
     </body>
 </html>
