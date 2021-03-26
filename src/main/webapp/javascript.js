@@ -1,5 +1,5 @@
 document.getElementById("GetPersons").onclick = function(){
-        fetch("/jpareststarter/api/person/").then( res => res.json()).then(data =>{
+        fetch("/ca2/api/person/").then( res => res.json()).then(data =>{
         let persons = data;
         let table = document.getElementById('table');
         clearTable();
@@ -21,7 +21,7 @@ document.getElementById("GetPersons").onclick = function(){
 
  document.getElementById("hobbyb").onclick = function(){
      let value = document.getElementById("hobby").value;
-    fetch("/jpareststarter/api/person/"+value).then( res => res.json()).then(data =>{
+    fetch("/ca2/api/person/hobby/"+value).then( res => res.json()).then(data =>{
     let persons = data;
     clearTable();
     for(i = 0; i < persons.length; i++ ){
@@ -42,19 +42,19 @@ document.getElementById("GetPersons").onclick = function(){
     
      document.getElementById("cityb").onclick = function(){
      let value = document.getElementById("city").value;
-    fetch("/jpareststarter/api/person/"+value).then( res => res.json()).then(data =>{
-    let persons = data;
+    fetch("/ca2/api/person/city/"+value).then( res => res.json()).then(data =>{
+    let city = data;
     clearTable();
-    for(i = 0; i < persons.length; i++ ){
+    for(i = 0; i < city.length; i++ ){
                 var row = `<tr> 
-                        <td>${persons[i].id}</td> 
-                        <td>${persons[i].firstName}</td> 
-                        <td>${persons[i].lastName}</td>
-                        <td>${persons[i].email}</td>
-                        <td>${persons[i].phoneInfomation[0].number}</td>
-                        <td>${persons[i].hobbies[0].name}</td>
-                        <td>${persons[i].adress.cityinfo.zipCode}</td>
-                        <td>${persons[i].adress.cityinfo.city}</td>
+                        <td>${city[i].id}</td> 
+                        <td>${city[i].firstName}</td> 
+                        <td>${city[i].lastName}</td>
+                        <td>${city[i].email}</td>
+                        <td>${city[i].phoneInfomation[0].number}</td>
+                        <td>${city[i].hobbies[0].name}</td>
+                        <td>${city[i].adress.cityinfo.zipCode}</td>
+                        <td>${city[i].adress.cityinfo.city}</td>
                          </tr>`;
             table.innerHTML += row;
         };
@@ -64,19 +64,19 @@ document.getElementById("GetPersons").onclick = function(){
 
 document.getElementById("phoneb").onclick = function(){
      let value = document.getElementById("phone").value;
-    fetch("/jpareststarter/api/person/"+value).then( res => res.json()).then(data =>{
-    let persons = data;
+    fetch("/ca2/api/person/phone/"+value).then( res => res.json()).then(data =>{
+    let phone = data;
     clearTable();
-    for(i = 0; i < persons.length; i++ ){
+    for(i = 0; i < phone.length; i++ ){
                 var row = `<tr> 
-                        <td>${persons[i].id}</td> 
-                        <td>${persons[i].firstName}</td> 
-                        <td>${persons[i].lastName}</td>
-                        <td>${persons[i].email}</td>
-                        <td>${persons[i].phoneInfomation[0].number}</td>
-                        <td>${persons[i].hobbies[0].name}</td>
-                        <td>${persons[i].adress.cityinfo.zipCode}</td>
-                        <td>${persons[i].adress.cityinfo.city}</td>
+                        <td>${phone[i].id}</td> 
+                        <td>${phone[i].firstName}</td> 
+                        <td>${phone[i].lastName}</td>
+                        <td>${phone[i].email}</td>
+                        <td>${phone[i].phoneInfomation[0].number}</td>
+                        <td>${phone[i].hobbies[0].name}</td>
+                        <td>${phone[i].adress.cityinfo.zipCode}</td>
+                        <td>${phone[i].adress.cityinfo.city}</td>
                          </tr>`;
             table.innerHTML += row;
         };
@@ -84,7 +84,7 @@ document.getElementById("phoneb").onclick = function(){
     }
 
 function GetAllZipCodes(){
-        fetch("/jpareststarter/api/person/zipcodes").then( res => res.json()).then(data =>{
+        fetch("/ca2/api/person/zipcodes").then( res => res.json()).then(data =>{
         let zipcodes = data;
         let table = document.getElementById('table');
         clearTable();
@@ -128,7 +128,7 @@ document.getElementById("CreateUser").onclick = function() {
 
 
 document.getElementById("populate").onclick = function(){
-        fetch("/jpareststarter/api/person/").then( res => res.json()).then(data =>{
+        fetch("/ca2/api/person/").then( res => res.json()).then(data =>{
         let hobby = data;
         let table = document.getElementById('dropdown');
         

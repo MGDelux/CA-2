@@ -66,21 +66,7 @@ public class RenameMeResourceTest {
 
     // Setup the DataBase (used by the test-server and this test) in a known state BEFORE EACH TEST
     //TODO -- Make sure to change the EntityClass used below to use YOUR OWN (renamed) Entity class
-    @BeforeEach
-    public void setUp() {
-        EntityManager em = emf.createEntityManager();
-          
-        r1 = new PersonEntity("name", "More text","mail");
-        System.out.println(r1);
-        try {
-            em.getTransaction().begin();
-            em.createNamedQuery("PersonEntity.deleteAllRows").executeUpdate();
-            em.persist(r1);
-            em.getTransaction().commit();
-        } finally {
-            em.close();
-        }
-    }
+  
 
     @Test
     public void testCityAPIOnline() {
@@ -93,3 +79,4 @@ public class RenameMeResourceTest {
      //  System.out.println("Testing is testPersonApiOnline UP");
       //  given().contentType("application/json").get("/person/status").then().assertThat().statusCode(HttpStatus.OK_200.getStatusCode()).body("msg", equalTo("Person API Online"));
     }
+}
