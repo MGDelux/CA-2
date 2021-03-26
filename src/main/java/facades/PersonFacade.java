@@ -172,7 +172,23 @@ public class PersonFacade {
         }
      
     }
-    
-  
 
+    public List<PersonDTO> getPersonByPhone(String phonenr) {
+              EntityManager em = emf.createEntityManager();
+ try{
+              List<PersonEntity> persons = new ArrayList<>();
+        TypedQuery<PersonEntity> query = em.createQuery("SELECT r FROM PersonEntity r", PersonEntity.class);
+        List<PersonEntity> rms = query.getResultList();
+        for(PersonEntity p : rms){
+        if(p.getPhoneInfomation().contains(phonenr)){
+            persons.add(p);
+        }       
+ }
+        return PersonDTO.getDtos(persons);
+        
+    }finally{
+     em.close();
+  }
+
+}
 }
