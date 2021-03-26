@@ -93,3 +93,5 @@ public class RenameMeResourceTest {
      //  System.out.println("Testing is testPersonApiOnline UP");
       //  given().contentType("application/json").get("/person/status").then().assertThat().statusCode(HttpStatus.OK_200.getStatusCode()).body("msg", equalTo("Person API Online"));
     }
+
+}

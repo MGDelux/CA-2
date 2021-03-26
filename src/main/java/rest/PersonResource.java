@@ -94,5 +94,13 @@ public class PersonResource {
         return GSON.toJson(p);
          }
          
-
+   @Path("/phone/{phonenr}")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+         public String phone(@PathParam("phonenr")String phonenr) throws Exception{
+                     System.out.println(phonenr);
+            List<PersonDTO> list =  FACADE.getPersonByPhone(phonenr);
+        return GSON.toJson(list);
+         }
+         
 }
